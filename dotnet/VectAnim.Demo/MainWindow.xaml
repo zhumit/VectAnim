@@ -1,0 +1,155 @@
+<Window x:Class="VectAnim.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:va="clr-namespace:VectAnim.Wpf.Controls;assembly=VectAnim.Wpf"
+        xmlns:loc="clr-namespace:VectAnim.Wpf.Localization;assembly=VectAnim.Wpf"
+        Title="{loc:Loc Key=Demo.WindowTitle}"
+        Height="900" Width="1440"
+        MinHeight="620" MinWidth="1080"
+        Background="{StaticResource Bg0Brush}"
+        FontFamily="Microsoft YaHei UI, Segoe UI"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Top toolbar -->
+        <Border Grid.Row="0" Background="{StaticResource Bg1Brush}" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,0,0,1" Padding="12,8">
+            <DockPanel LastChildFill="False">
+                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="26" Height="26" CornerRadius="6" Background="#0EA5E9" Margin="0,0,10,0">
+                        <TextBlock Text="V" FontWeight="Bold" Foreground="#041020" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <TextBlock Text="{loc:Loc Key=Demo.AppTitle}" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" />
+                    <TextBlock Text="{loc:Loc Key=Demo.AppSubtitle}" Foreground="{StaticResource SubTextBrush}" FontSize="11" Margin="8,2,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="{loc:Loc Key=Demo.RenderMode}" Foreground="{StaticResource SubTextBrush}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <ComboBox x:Name="RenderModeBox" Width="110" SelectionChanged="OnRenderModeChanged">
+                        <ComboBoxItem Content="Drawing" IsSelected="True" />
+                        <ComboBoxItem Content="Shapes" />
+                    </ComboBox>
+
+                    <TextBlock Text="{loc:Loc Key=Demo.Stretch}" Foreground="{StaticResource SubTextBrush}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <ComboBox x:Name="StretchBox" Width="120" SelectionChanged="OnStretchChanged">
+                        <ComboBoxItem Content="Uniform" IsSelected="True" />
+                        <ComboBoxItem Content="UniformToFill" />
+                        <ComboBoxItem Content="Fill" />
+                        <ComboBoxItem Content="None" />
+                    </ComboBox>
+
+                    <Button Content="{loc:Loc Key=Demo.OpenFile}" Click="OnOpenFile" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Main area -->
+        <Grid Grid.Row="1" Margin="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="360" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Render surface -->
+            <Border Grid.Column="0" Background="#060A12" BorderBrush="{StaticResource LineBrush}" BorderThickness="1" CornerRadius="8" Margin="0,0,12,0">
+                <Grid>
+                    <va:VectAnimViewer x:Name="Viewer"
+                                       Stretch="Uniform"
+                                       Interactive="True"
+                                       AutoPlay="False"
+                                       Margin="10" />
+                    <TextBlock x:Name="EmptyHint"
+                               Text="{loc:Loc Key=Demo.EmptyHint}"
+                               Foreground="{StaticResource SubTextBrush}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+
+            <!-- Control panel -->
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel>
+
+                    <!-- Sample switching -->
+                    <Border Style="{StaticResource Panel}">
+                        <StackPanel>
+                            <TextBlock Text="{loc:Loc Key=Demo.SampleDocuments}" Style="{StaticResource Caption}" />
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="{loc:Loc Key=Demo.GearSample}" Click="OnLoadGearSample" />
+                                <Button Content="{loc:Loc Key=Demo.IndustrialSample}" Click="OnLoadIndustrialSample" />
+                            </StackPanel>
+                            <TextBlock x:Name="SourceText" Style="{StaticResource Caption}" Margin="0,8,0,0" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Playback control -->
+                    <Border Style="{StaticResource Panel}">
+                        <StackPanel>
+                            <TextBlock Text="{loc:Loc Key=Demo.AnimationPlayback}" Style="{StaticResource Caption}" />
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                                <Button x:Name="PlayButton" Content="{loc:Loc Key=Demo.Play}" Style="{StaticResource PrimaryButton}" Click="OnPlayPause" />
+                                <Button Content="{loc:Loc Key=Demo.Stop}" Click="OnStop" />
+                                <CheckBox x:Name="AutoPlayBox" Content="{loc:Loc Key=Demo.AutoPlay}" VerticalAlignment="Center" Click="OnAutoPlayChanged" />
+                            </StackPanel>
+                            <DockPanel>
+                                <TextBlock x:Name="TimeText" DockPanel.Dock="Right" Text="0.00 s" Width="70" TextAlignment="Right"
+                                           Foreground="{StaticResource AccentBrush}" FontFamily="Consolas" VerticalAlignment="Center" />
+                                <Slider x:Name="TimeSlider" Minimum="0" Maximum="4" Value="0" IsSnapToTickEnabled="False"
+                                        ValueChanged="OnTimeSliderChanged" />
+                            </DockPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Variable injection -->
+                    <Border Style="{StaticResource Panel}">
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,6">
+                                <Button DockPanel.Dock="Right" Content="{loc:Loc Key=Demo.ClearExternal}" FontSize="11" Padding="8,2" Click="OnClearExternal" />
+                                <TextBlock Text="{loc:Loc Key=Demo.VariableInjection}" Style="{StaticResource Caption}" VerticalAlignment="Center" Margin="0" />
+                            </DockPanel>
+                            <StackPanel x:Name="VariablePanel" />
+                            <CheckBox x:Name="PlcSimulationBox" Content="{loc:Loc Key=Demo.PlcSimulation}" Margin="0,8,0,0" Click="OnPlcSimulationChanged" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Diagnostics -->
+                    <Border Style="{StaticResource Panel}">
+                        <StackPanel>
+                            <TextBlock Text="{loc:Loc Key=Demo.Diagnostics}" Style="{StaticResource Caption}" />
+                            <ListBox x:Name="DiagnosticsList" Height="110" Background="{StaticResource Bg0Brush}"
+                                     BorderBrush="{StaticResource LineBrush}" Foreground="{StaticResource WarnBrush}"
+                                     FontSize="11" FontFamily="Consolas" />
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Event log -->
+                    <Border Style="{StaticResource Panel}">
+                        <StackPanel>
+                            <TextBlock Text="{loc:Loc Key=Demo.InteractionEvents}" Style="{StaticResource Caption}" />
+                            <ListBox x:Name="EventList" Height="150" Background="{StaticResource Bg0Brush}"
+                                     BorderBrush="{StaticResource LineBrush}" Foreground="{StaticResource SubTextBrush}"
+                                     FontSize="11" FontFamily="Consolas" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Status bar -->
+        <Border Grid.Row="2" Background="{StaticResource Bg1Brush}" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0" Padding="12,5">
+            <DockPanel LastChildFill="False">
+                <TextBlock x:Name="StatusText" DockPanel.Dock="Left" Text="{loc:Loc Key=Demo.Ready}" Foreground="{StaticResource SubTextBrush}" FontSize="11" />
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <TextBlock x:Name="ShapeCountText" Text="{loc:Loc Key=Demo.ShapeCountInitial}" Foreground="{StaticResource SubTextBrush}" FontSize="11" Margin="0,0,16,0" FontFamily="Consolas" />
+                    <TextBlock x:Name="HoverText" Text="{loc:Loc Key=Demo.HitNone}" Foreground="{StaticResource SubTextBrush}" FontSize="11" Margin="0,0,16,0" FontFamily="Consolas" />
+                    <TextBlock x:Name="FpsText" Text="— fps" Foreground="{StaticResource AccentBrush}" FontSize="11" FontFamily="Consolas" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,1113 @@
+{
+  "SchemaVersion": "1.0",
+  "Canvas": {
+    "Width": 800,
+    "Height": 600,
+    "Background": "#FFFFFFFF"
+  },
+  "Variables": [
+    {
+      "Name": "RPM",
+      "DefaultValue": 1200,
+      "Description": "Drive shaft speed",
+      "Min": 0,
+      "Max": 3000,
+      "Unit": "r/min"
+    },
+    {
+      "Name": "GearAngle",
+      "DefaultValue": 0,
+      "Description": "Drive gear angle",
+      "Min": 0,
+      "Max": 360,
+      "Unit": "°"
+    },
+    {
+      "Name": "DrivenAngle",
+      "DefaultValue": 0,
+      "Description": "Driven gear angle",
+      "Min": 0,
+      "Max": 360,
+      "Unit": "°"
+    },
+    {
+      "Name": "PointerX",
+      "DefaultValue": 380,
+      "Description": "Pointer line end X",
+      "Min": 300,
+      "Max": 470
+    },
+    {
+      "Name": "PointerY",
+      "DefaultValue": 150,
+      "Description": "Pointer line end Y",
+      "Min": 60,
+      "Max": 300
+    },
+    {
+      "Name": "LampColor",
+      "DefaultValue": 65280,
+      "Description": "Status lamp color (0xRRGGBB)",
+      "Min": 0,
+      "Max": 16777215
+    },
+    {
+      "Name": "Temp",
+      "DefaultValue": 45,
+      "Description": "Bearing temperature",
+      "Min": 0,
+      "Max": 120,
+      "Unit": "℃"
+    },
+    {
+      "Name": "TempBarHeight",
+      "DefaultValue": 0,
+      "Description": "Temperature bar height (expression)",
+      "Min": 0,
+      "Max": 200
+    },
+    {
+      "Name": "TempBarY",
+      "DefaultValue": 0,
+      "Description": "Temperature bar top Y (expression)",
+      "Min": 0,
+      "Max": 600
+    }
+  ],
+  "Shapes": [
+    {
+      "Id": "bg_frame",
+      "Name": "Backplate",
+      "IsVisible": true,
+      "ZIndex": 0,
+      "Fill": {
+        "Const": "#F8FAFC"
+      },
+      "Stroke": {
+        "Const": "#CBD5E1"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 40
+      },
+      "Y": {
+        "Const": 40
+      },
+      "Width": {
+        "Const": 720
+      },
+      "Height": {
+        "Const": 520
+      },
+      "RadiusX": {
+        "Const": 14
+      },
+      "RadiusY": {
+        "Const": 14
+      }
+    },
+    {
+      "Id": "gear_01",
+      "Name": "Drive gear",
+      "IsVisible": true,
+      "ZIndex": 20,
+      "Fill": {
+        "Const": "#E2E8F0"
+      },
+      "Stroke": {
+        "Const": "#1E293B"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Polygon",
+      "Points": [
+        {
+          "X": {
+            "Const": 370
+          },
+          "Y": {
+            "Const": 300
+          }
+        },
+        {
+          "X": {
+            "Const": 384.941
+          },
+          "Y": {
+            "Const": 313.453
+          }
+        },
+        {
+          "X": {
+            "Const": 383.929
+          },
+          "Y": {
+            "Const": 318.76
+          }
+        },
+        {
+          "X": {
+            "Const": 365.084
+          },
+          "Y": {
+            "Const": 325.769
+          }
+        },
+        {
+          "X": {
+            "Const": 360.622
+          },
+          "Y": {
+            "Const": 335
+          }
+        },
+        {
+          "X": {
+            "Const": 366.835
+          },
+          "Y": {
+            "Const": 354.122
+          }
+        },
+        {
+          "X": {
+            "Const": 363.304
+          },
+          "Y": {
+            "Const": 358.211
+          }
+        },
+        {
+          "X": {
+            "Const": 343.48
+          },
+          "Y": {
+            "Const": 354.859
+          }
+        },
+        {
+          "X": {
+            "Const": 335
+          },
+          "Y": {
+            "Const": 360.622
+          }
+        },
+        {
+          "X": {
+            "Const": 330.82
+          },
+          "Y": {
+            "Const": 380.288
+          }
+        },
+        {
+          "X": {
+            "Const": 325.718
+          },
+          "Y": {
+            "Const": 382.065
+          }
+        },
+        {
+          "X": {
+            "Const": 310.226
+          },
+          "Y": {
+            "Const": 369.249
+          }
+        },
+        {
+          "X": {
+            "Const": 300
+          },
+          "Y": {
+            "Const": 370
+          }
+        },
+        {
+          "X": {
+            "Const": 286.547
+          },
+          "Y": {
+            "Const": 384.941
+          }
+        },
+        {
+          "X": {
+            "Const": 281.24
+          },
+          "Y": {
+            "Const": 383.929
+          }
+        },
+        {
+          "X": {
+            "Const": 274.231
+          },
+          "Y": {
+            "Const": 365.084
+          }
+        },
+        {
+          "X": {
+            "Const": 265
+          },
+          "Y": {
+            "Const": 360.622
+          }
+        },
+        {
+          "X": {
+            "Const": 245.878
+          },
+          "Y": {
+            "Const": 366.835
+          }
+        },
+        {
+          "X": {
+            "Const": 241.789
+          },
+          "Y": {
+            "Const": 363.304
+          }
+        },
+        {
+          "X": {
+            "Const": 245.141
+          },
+          "Y": {
+            "Const": 343.48
+          }
+        },
+        {
+          "X": {
+            "Const": 239.378
+          },
+          "Y": {
+            "Const": 335
+          }
+        },
+        {
+          "X": {
+            "Const": 219.712
+          },
+          "Y": {
+            "Const": 330.82
+          }
+        },
+        {
+          "X": {
+            "Const": 217.935
+          },
+          "Y": {
+            "Const": 325.718
+          }
+        },
+        {
+          "X": {
+            "Const": 230.751
+          },
+          "Y": {
+            "Const": 310.226
+          }
+        },
+        {
+          "X": {
+            "Const": 230
+          },
+          "Y": {
+            "Const": 300
+          }
+        },
+        {
+          "X": {
+            "Const": 215.059
+          },
+          "Y": {
+            "Const": 286.547
+          }
+        },
+        {
+          "X": {
+            "Const": 216.071
+          },
+          "Y": {
+            "Const": 281.24
+          }
+        },
+        {
+          "X": {
+            "Const": 234.916
+          },
+          "Y": {
+            "Const": 274.231
+          }
+        },
+        {
+          "X": {
+            "Const": 239.378
+          },
+          "Y": {
+            "Const": 265
+          }
+        },
+        {
+          "X": {
+            "Const": 233.165
+          },
+          "Y": {
+            "Const": 245.878
+          }
+        },
+        {
+          "X": {
+            "Const": 236.696
+          },
+          "Y": {
+            "Const": 241.789
+          }
+        },
+        {
+          "X": {
+            "Const": 256.52
+          },
+          "Y": {
+            "Const": 245.141
+          }
+        },
+        {
+          "X": {
+            "Const": 265
+          },
+          "Y": {
+            "Const": 239.378
+          }
+        },
+        {
+          "X": {
+            "Const": 269.18
+          },
+          "Y": {
+            "Const": 219.712
+          }
+        },
+        {
+          "X": {
+            "Const": 274.282
+          },
+          "Y": {
+            "Const": 217.935
+          }
+        },
+        {
+          "X": {
+            "Const": 289.774
+          },
+          "Y": {
+            "Const": 230.751
+          }
+        },
+        {
+          "X": {
+            "Const": 300
+          },
+          "Y": {
+            "Const": 230
+          }
+        },
+        {
+          "X": {
+            "Const": 313.453
+          },
+          "Y": {
+            "Const": 215.059
+          }
+        },
+        {
+          "X": {
+            "Const": 318.76
+          },
+          "Y": {
+            "Const": 216.071
+          }
+        },
+        {
+          "X": {
+            "Const": 325.769
+          },
+          "Y": {
+            "Const": 234.916
+          }
+        },
+        {
+          "X": {
+            "Const": 335
+          },
+          "Y": {
+            "Const": 239.378
+          }
+        },
+        {
+          "X": {
+            "Const": 354.122
+          },
+          "Y": {
+            "Const": 233.165
+          }
+        },
+        {
+          "X": {
+            "Const": 358.211
+          },
+          "Y": {
+            "Const": 236.696
+          }
+        },
+        {
+          "X": {
+            "Const": 354.859
+          },
+          "Y": {
+            "Const": 256.52
+          }
+        },
+        {
+          "X": {
+            "Const": 360.622
+          },
+          "Y": {
+            "Const": 265
+          }
+        },
+        {
+          "X": {
+            "Const": 380.288
+          },
+          "Y": {
+            "Const": 269.18
+          }
+        },
+        {
+          "X": {
+            "Const": 382.065
+          },
+          "Y": {
+            "Const": 274.282
+          }
+        },
+        {
+          "X": {
+            "Const": 369.249
+          },
+          "Y": {
+            "Const": 289.774
+          }
+        }
+      ],
+      "IsClosed": true,
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 300
+          },
+          "CenterY": {
+            "Const": 300
+          },
+          "Value": {
+            "Bind": "GearAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "gear_02",
+      "Name": "Driven gear",
+      "IsVisible": true,
+      "ZIndex": 18,
+      "Fill": {
+        "Const": "#F1F5F9"
+      },
+      "Stroke": {
+        "Const": "#1E293B"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Polygon",
+      "Points": [
+        {
+          "X": {
+            "Const": 498.795
+          },
+          "Y": {
+            "Const": 310.911
+          }
+        },
+        {
+          "X": {
+            "Const": 507.471
+          },
+          "Y": {
+            "Const": 328.161
+          }
+        },
+        {
+          "X": {
+            "Const": 504.566
+          },
+          "Y": {
+            "Const": 333.445
+          }
+        },
+        {
+          "X": {
+            "Const": 485.352
+          },
+          "Y": {
+            "Const": 335.358
+          }
+        },
+        {
+          "X": {
+            "Const": 476.788
+          },
+          "Y": {
+            "Const": 342.219
+          }
+        },
+        {
+          "X": {
+            "Const": 470.725
+          },
+          "Y": {
+            "Const": 360.551
+          }
+        },
+        {
+          "X": {
+            "Const": 464.935
+          },
+          "Y": {
+            "Const": 362.233
+          }
+        },
+        {
+          "X": {
+            "Const": 449.996
+          },
+          "Y": {
+            "Const": 350
+          }
+        },
+        {
+          "X": {
+            "Const": 439.089
+          },
+          "Y": {
+            "Const": 348.795
+          }
+        },
+        {
+          "X": {
+            "Const": 421.839
+          },
+          "Y": {
+            "Const": 357.471
+          }
+        },
+        {
+          "X": {
+            "Const": 416.555
+          },
+          "Y": {
+            "Const": 354.566
+          }
+        },
+        {
+          "X": {
+            "Const": 414.642
+          },
+          "Y": {
+            "Const": 335.352
+          }
+        },
+        {
+          "X": {
+            "Const": 407.781
+          },
+          "Y": {
+            "Const": 326.788
+          }
+        },
+        {
+          "X": {
+            "Const": 389.449
+          },
+          "Y": {
+            "Const": 320.725
+          }
+        },
+        {
+          "X": {
+            "Const": 387.767
+          },
+          "Y": {
+            "Const": 314.935
+          }
+        },
+        {
+          "X": {
+            "Const": 400
+          },
+          "Y": {
+            "Const": 299.996
+          }
+        },
+        {
+          "X": {
+            "Const": 401.205
+          },
+          "Y": {
+            "Const": 289.089
+          }
+        },
+        {
+          "X": {
+            "Const": 392.529
+          },
+          "Y": {
+            "Const": 271.839
+          }
+        },
+        {
+          "X": {
+            "Const": 395.434
+          },
+          "Y": {
+            "Const": 266.555
+          }
+        },
+        {
+          "X": {
+            "Const": 414.648
+          },
+          "Y": {
+            "Const": 264.642
+          }
+        },
+        {
+          "X": {
+            "Const": 423.212
+          },
+          "Y": {
+            "Const": 257.781
+          }
+        },
+        {
+          "X": {
+            "Const": 429.275
+          },
+          "Y": {
+            "Const": 239.449
+          }
+        },
+        {
+          "X": {
+            "Const": 435.065
+          },
+          "Y": {
+            "Const": 237.767
+          }
+        },
+        {
+          "X": {
+            "Const": 450.004
+          },
+          "Y": {
+            "Const": 250
+          }
+        },
+        {
+          "X": {
+            "Const": 460.911
+          },
+          "Y": {
+            "Const": 251.205
+          }
+        },
+        {
+          "X": {
+            "Const": 478.161
+          },
+          "Y": {
+            "Const": 242.529
+          }
+        },
+        {
+          "X": {
+            "Const": 483.445
+          },
+          "Y": {
+            "Const": 245.434
+          }
+        },
+        {
+          "X": {
+            "Const": 485.358
+          },
+          "Y": {
+            "Const": 264.648
+          }
+        },
+        {
+          "X": {
+            "Const": 492.219
+          },
+          "Y": {
+            "Const": 273.212
+          }
+        },
+        {
+          "X": {
+            "Const": 510.551
+          },
+          "Y": {
+            "Const": 279.275
+          }
+        },
+        {
+          "X": {
+            "Const": 512.233
+          },
+          "Y": {
+            "Const": 285.065
+          }
+        },
+        {
+          "X": {
+            "Const": 500
+          },
+          "Y": {
+            "Const": 300.004
+          }
+        }
+      ],
+      "IsClosed": true,
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 450
+          },
+          "CenterY": {
+            "Const": 300
+          },
+          "Value": {
+            "Bind": "DrivenAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "hub_01",
+      "Name": "Drive shaft",
+      "IsVisible": true,
+      "ZIndex": 30,
+      "Fill": {
+        "Const": "#94A3B8"
+      },
+      "Stroke": {
+        "Const": "#0F172A"
+      },
+      "StrokeThickness": {
+        "Const": 1.5
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 300
+      },
+      "CenterY": {
+        "Const": 300
+      },
+      "RadiusX": {
+        "Const": 22
+      },
+      "RadiusY": {
+        "Const": 22
+      }
+    },
+    {
+      "Id": "key_01",
+      "Name": "Keyway marker",
+      "IsVisible": true,
+      "ZIndex": 32,
+      "Fill": {
+        "Const": "#0EA5E9"
+      },
+      "Stroke": {
+        "Const": "#0369A1"
+      },
+      "StrokeThickness": {
+        "Const": 1
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 294
+      },
+      "Y": {
+        "Const": 238
+      },
+      "Width": {
+        "Const": 12
+      },
+      "Height": {
+        "Const": 22
+      },
+      "RadiusX": {
+        "Const": 3
+      },
+      "RadiusY": {
+        "Const": 3
+      },
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 300
+          },
+          "CenterY": {
+            "Const": 300
+          },
+          "Value": {
+            "Bind": "GearAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "line_01",
+      "Name": "Pointer line",
+      "IsVisible": true,
+      "ZIndex": 40,
+      "Fill": null,
+      "Stroke": {
+        "Const": "#EF4444"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "LineCap": "Round",
+      "Type": "Line",
+      "X1": {
+        "Const": 300
+      },
+      "Y1": {
+        "Const": 300
+      },
+      "X2": {
+        "Bind": "PointerX"
+      },
+      "Y2": {
+        "Bind": "PointerY"
+      }
+    },
+    {
+      "Id": "lamp_01",
+      "Name": "Status lamp",
+      "IsVisible": true,
+      "ZIndex": 50,
+      "Fill": {
+        "Bind": "LampColor"
+      },
+      "Stroke": {
+        "Const": "#0F172A"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 680
+      },
+      "CenterY": {
+        "Const": 110
+      },
+      "RadiusX": {
+        "Const": 26
+      },
+      "RadiusY": {
+        "Const": 26
+      }
+    },
+    {
+      "Id": "temp_track",
+      "Name": "Temperature bar track",
+      "IsVisible": true,
+      "ZIndex": 10,
+      "Fill": {
+        "Const": "#E2E8F0"
+      },
+      "Stroke": {
+        "Const": "#94A3B8"
+      },
+      "StrokeThickness": {
+        "Const": 1
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 90
+      },
+      "Y": {
+        "Const": 430
+      },
+      "Width": {
+        "Const": 60
+      },
+      "Height": {
+        "Const": 100
+      },
+      "RadiusX": {
+        "Const": 6
+      },
+      "RadiusY": {
+        "Const": 6
+      }
+    },
+    {
+      "Id": "temp_bar",
+      "Name": "Temperature bar",
+      "IsVisible": true,
+      "ZIndex": 12,
+      "Fill": {
+        "Const": "#F59E0B"
+      },
+      "Stroke": null,
+      "StrokeThickness": {
+        "Const": 0
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 90
+      },
+      "Y": {
+        "Bind": "TempBarY"
+      },
+      "Width": {
+        "Const": 60
+      },
+      "Height": {
+        "Bind": "TempBarHeight"
+      },
+      "RadiusX": {
+        "Const": 6
+      },
+      "RadiusY": {
+        "Const": 6
+      }
+    },
+    {
+      "Id": "pipe_01",
+      "Name": "Piping",
+      "IsVisible": true,
+      "ZIndex": 5,
+      "Fill": null,
+      "Stroke": {
+        "Const": "#475569"
+      },
+      "StrokeThickness": {
+        "Const": 6
+      },
+      "LineCap": "Round",
+      "Type": "Path",
+      "Data": "M 60,300 C 110,300 120,470 150,470",
+      "OffsetX": 0,
+      "OffsetY": 0
+    }
+  ],
+  "ExpressionAnimations": [
+    {
+      "Id": "expr_gear_rotate",
+      "TargetVariable": "GearAngle",
+      "Expression": "RPM * 6 * t",
+      "Enabled": true,
+      "Wrap": 360
+    },
+    {
+      "Id": "expr_driven_rotate",
+      "TargetVariable": "DrivenAngle",
+      "Expression": "GearAngle * -1.5",
+      "Enabled": true,
+      "Wrap": 360
+    },
+    {
+      "Id": "expr_temp_bar",
+      "TargetVariable": "TempBarHeight",
+      "Expression": "clamp(Temp, 0, 120) / 120 * 100",
+      "Enabled": true
+    },
+    {
+      "Id": "expr_temp_y",
+      "TargetVariable": "TempBarY",
+      "Expression": "530 - clamp(Temp, 0, 120) / 120 * 100",
+      "Enabled": true
+    }
+  ],
+  "KeyframeAnimations": [
+    {
+      "Id": "kf_pointer",
+      "Name": "Pointer sweep",
+      "TargetVariable": "PointerX",
+      "Loop": true,
+      "Keyframes": [
+        {
+          "Time": 0,
+          "Value": 380,
+          "Easing": "EaseInOut"
+        },
+        {
+          "Time": 2,
+          "Value": 450,
+          "Easing": "EaseInOut"
+        },
+        {
+          "Time": 4,
+          "Value": 380,
+          "Easing": "EaseInOut"
+        }
+      ]
+    }
+  ],
+  "Groups": [
+    {
+      "GroupId": "group_gear",
+      "Name": "Gear assembly",
+      "ShapeIds": [
+        "gear_01",
+        "gear_02",
+        "hub_01",
+        "key_01"
+      ],
+      "Visible": true
+    },
+    {
+      "GroupId": "group_gauge",
+      "Name": "Gauge assembly",
+      "ShapeIds": [
+        "temp_track",
+        "temp_bar"
+      ],
+      "Visible": true
+    }
+  ],
+  "Meta": {
+    "Title": "Gear drive demo",
+    "Description": "Expression animations spin the gears, keyframes drive the pointer line, numeric color drives the status lamp",
+    "Author": "VectAnim",
+    "CreatedAt": "2026-10-26T08:06:10.622Z",
+    "UpdatedAt": "2026-10-26T08:06:10.622Z"
+  }
+}

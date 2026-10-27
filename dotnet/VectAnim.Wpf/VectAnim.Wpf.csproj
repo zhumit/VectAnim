@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>VectAnim.Wpf</RootNamespace>
+    <AssemblyName>VectAnim.Wpf</AssemblyName>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>VectAnim.Wpf</PackageId>
+    <Description>VectAnim runtime rendering control: parses declarative .vectanim.json vector descriptions and renders them driven by external business data.</Description>
+    <PackageTags>wpf;vector;animation;scada;hmi;vectanim</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

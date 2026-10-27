@@ -1,0 +1,1319 @@
+{
+  "SchemaVersion": "1.0",
+  "Canvas": {
+    "Width": 960,
+    "Height": 600,
+    "Background": "#0B1220FF"
+  },
+  "Variables": [
+    {
+      "Name": "MotorRPM",
+      "DefaultValue": 900,
+      "Description": "Motor speed",
+      "Min": 0,
+      "Max": 1800,
+      "Unit": "r/min"
+    },
+    {
+      "Name": "FanAngle",
+      "DefaultValue": 0,
+      "Description": "Fan angle",
+      "Min": 0,
+      "Max": 360,
+      "Unit": "°"
+    },
+    {
+      "Name": "TankLevel",
+      "DefaultValue": 62,
+      "Description": "Liquid level",
+      "Min": 0,
+      "Max": 100,
+      "Unit": "%"
+    },
+    {
+      "Name": "LevelHeight",
+      "DefaultValue": 0,
+      "Description": "Level height (expression)",
+      "Min": 0,
+      "Max": 240
+    },
+    {
+      "Name": "LevelY",
+      "DefaultValue": 0,
+      "Description": "Level top Y (expression)",
+      "Min": 0,
+      "Max": 600
+    },
+    {
+      "Name": "Alarm",
+      "DefaultValue": 0,
+      "Description": "Alarm (0/1)",
+      "Min": 0,
+      "Max": 1
+    },
+    {
+      "Name": "LampColor",
+      "DefaultValue": 65280,
+      "Description": "Alarm lamp color",
+      "Min": 0,
+      "Max": 16777215
+    },
+    {
+      "Name": "ConveyorPos",
+      "DefaultValue": 428,
+      "Description": "Material offset",
+      "Min": 420,
+      "Max": 710
+    },
+    {
+      "Name": "NeedleAngle",
+      "DefaultValue": 0,
+      "Description": "Needle angle",
+      "Min": -120,
+      "Max": 120,
+      "Unit": "°"
+    },
+    {
+      "Name": "Pressure",
+      "DefaultValue": 0.6,
+      "Description": "Pressure",
+      "Min": 0,
+      "Max": 1.6,
+      "Unit": "MPa"
+    }
+  ],
+  "Shapes": [
+    {
+      "Id": "panel_bg",
+      "Name": "Panel background",
+      "IsVisible": true,
+      "ZIndex": 0,
+      "Fill": {
+        "Const": "#111C2E"
+      },
+      "Stroke": {
+        "Const": "#1E3A5F"
+      },
+      "StrokeThickness": {
+        "Const": 1.5
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 20
+      },
+      "Y": {
+        "Const": 20
+      },
+      "Width": {
+        "Const": 920
+      },
+      "Height": {
+        "Const": 560
+      },
+      "RadiusX": {
+        "Const": 10
+      },
+      "RadiusY": {
+        "Const": 10
+      }
+    },
+    {
+      "Id": "tank_body",
+      "Name": "Tank",
+      "IsVisible": true,
+      "ZIndex": 10,
+      "Fill": {
+        "Const": "#16233A"
+      },
+      "Stroke": {
+        "Const": "#2D4B73"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 70
+      },
+      "Y": {
+        "Const": 280
+      },
+      "Width": {
+        "Const": 180
+      },
+      "Height": {
+        "Const": 240
+      },
+      "RadiusX": {
+        "Const": 16
+      },
+      "RadiusY": {
+        "Const": 16
+      }
+    },
+    {
+      "Id": "tank_liquid",
+      "Name": "Liquid level",
+      "IsVisible": true,
+      "ZIndex": 12,
+      "Fill": {
+        "Const": "#0EA5E9"
+      },
+      "Stroke": null,
+      "StrokeThickness": {
+        "Const": 0
+      },
+      "Opacity": {
+        "Const": 0.85
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 74
+      },
+      "Y": {
+        "Bind": "LevelY"
+      },
+      "Width": {
+        "Const": 172
+      },
+      "Height": {
+        "Bind": "LevelHeight"
+      },
+      "RadiusX": {
+        "Const": 12
+      },
+      "RadiusY": {
+        "Const": 12
+      }
+    },
+    {
+      "Id": "tank_cap",
+      "Name": "Tank cap",
+      "IsVisible": true,
+      "ZIndex": 14,
+      "Fill": {
+        "Const": "#1E3A5F"
+      },
+      "Stroke": {
+        "Const": "#2D4B73"
+      },
+      "StrokeThickness": {
+        "Const": 1.5
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 160
+      },
+      "CenterY": {
+        "Const": 280
+      },
+      "RadiusX": {
+        "Const": 90
+      },
+      "RadiusY": {
+        "Const": 16
+      }
+    },
+    {
+      "Id": "pipe_main",
+      "Name": "Main piping",
+      "IsVisible": true,
+      "ZIndex": 8,
+      "Fill": null,
+      "Stroke": {
+        "Const": "#33517A"
+      },
+      "StrokeThickness": {
+        "Const": 8
+      },
+      "LineCap": "Round",
+      "Type": "Path",
+      "Data": "M 250,470 L 330,470 L 330,320 L 420,320",
+      "OffsetX": 0,
+      "OffsetY": 0
+    },
+    {
+      "Id": "fan_blade_1",
+      "Name": "Fan blade 1",
+      "IsVisible": true,
+      "ZIndex": 20,
+      "Fill": {
+        "Const": "#38BDF8"
+      },
+      "Stroke": {
+        "Const": "#0EA5E9"
+      },
+      "StrokeThickness": {
+        "Const": 1
+      },
+      "Opacity": {
+        "Const": 0.85
+      },
+      "Type": "Polygon",
+      "Points": [
+        {
+          "X": {
+            "Const": 753.748
+          },
+          "Y": {
+            "Const": 194.786
+          }
+        },
+        {
+          "X": {
+            "Const": 753.986
+          },
+          "Y": {
+            "Const": 198.784
+          }
+        },
+        {
+          "X": {
+            "Const": 753.928
+          },
+          "Y": {
+            "Const": 202.788
+          }
+        },
+        {
+          "X": {
+            "Const": 753.573
+          },
+          "Y": {
+            "Const": 206.777
+          }
+        },
+        {
+          "X": {
+            "Const": 752.924
+          },
+          "Y": {
+            "Const": 210.728
+          }
+        },
+        {
+          "X": {
+            "Const": 751.983
+          },
+          "Y": {
+            "Const": 214.621
+          }
+        },
+        {
+          "X": {
+            "Const": 750.757
+          },
+          "Y": {
+            "Const": 218.433
+          }
+        },
+        {
+          "X": {
+            "Const": 749.251
+          },
+          "Y": {
+            "Const": 222.144
+          }
+        },
+        {
+          "X": {
+            "Const": 747.474
+          },
+          "Y": {
+            "Const": 225.733
+          }
+        },
+        {
+          "X": {
+            "Const": 713.229
+          },
+          "Y": {
+            "Const": 204.583
+          }
+        },
+        {
+          "X": {
+            "Const": 713.374
+          },
+          "Y": {
+            "Const": 204.139
+          }
+        },
+        {
+          "X": {
+            "Const": 713.505
+          },
+          "Y": {
+            "Const": 203.69
+          }
+        },
+        {
+          "X": {
+            "Const": 713.62
+          },
+          "Y": {
+            "Const": 203.238
+          }
+        },
+        {
+          "X": {
+            "Const": 713.721
+          },
+          "Y": {
+            "Const": 202.781
+          }
+        },
+        {
+          "X": {
+            "Const": 713.806
+          },
+          "Y": {
+            "Const": 202.322
+          }
+        },
+        {
+          "X": {
+            "Const": 713.876
+          },
+          "Y": {
+            "Const": 201.86
+          }
+        },
+        {
+          "X": {
+            "Const": 713.93
+          },
+          "Y": {
+            "Const": 201.396
+          }
+        },
+        {
+          "X": {
+            "Const": 713.969
+          },
+          "Y": {
+            "Const": 200.93
+          }
+        }
+      ],
+      "IsClosed": true,
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 700
+          },
+          "CenterY": {
+            "Const": 200
+          },
+          "Value": {
+            "Bind": "FanAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "fan_blade_2",
+      "Name": "Fan blade 2",
+      "IsVisible": true,
+      "ZIndex": 21,
+      "Fill": {
+        "Const": "#38BDF8"
+      },
+      "Stroke": {
+        "Const": "#0EA5E9"
+      },
+      "StrokeThickness": {
+        "Const": 1
+      },
+      "Opacity": {
+        "Const": 0.85
+      },
+      "Type": "Polygon",
+      "Points": [
+        {
+          "X": {
+            "Const": 705.214
+          },
+          "Y": {
+            "Const": 253.748
+          }
+        },
+        {
+          "X": {
+            "Const": 701.216
+          },
+          "Y": {
+            "Const": 253.986
+          }
+        },
+        {
+          "X": {
+            "Const": 697.212
+          },
+          "Y": {
+            "Const": 253.928
+          }
+        },
+        {
+          "X": {
+            "Const": 693.223
+          },
+          "Y": {
+            "Const": 253.573
+          }
+        },
+        {
+          "X": {
+            "Const": 689.272
+          },
+          "Y": {
+            "Const": 252.924
+          }
+        },
+        {
+          "X": {
+            "Const": 685.379
+          },
+          "Y": {
+            "Const": 251.983
+          }
+        },
+        {
+          "X": {
+            "Const": 681.567
+          },
+          "Y": {
+            "Const": 250.757
+          }
+        },
+        {
+          "X": {
+            "Const": 677.856
+          },
+          "Y": {
+            "Const": 249.251
+          }
+        },
+        {
+          "X": {
+            "Const": 674.267
+          },
+          "Y": {
+            "Const": 247.474
+          }
+        },
+        {
+          "X": {
+            "Const": 695.417
+          },
+          "Y": {
+            "Const": 213.229
+          }
+        },
+        {
+          "X": {
+            "Const": 695.861
+          },
+          "Y": {
+            "Const": 213.374
+          }
+        },
+        {
+          "X": {
+            "Const": 696.31
+          },
+          "Y": {
+            "Const": 213.505
+          }
+        },
+        {
+          "X": {
+            "Const": 696.762
+          },
+          "Y": {
+            "Const": 213.62
+          }
+        },
+        {
+          "X": {
+            "Const": 697.219
+          },
+          "Y": {
+            "Const": 213.721
+          }
+        },
+        {
+          "X": {
+            "Const": 697.678
+          },
+          "Y": {
+            "Const": 213.806
+          }
+        },
+        {
+          "X": {
+            "Const": 698.14
+          },
+          "Y": {
+            "Const": 213.876
+          }
+        },
+        {
+          "X": {
+            "Const": 698.604
+          },
+          "Y": {
+            "Const": 213.93
+          }
+        },
+        {
+          "X": {
+            "Const": 699.07
+          },
+          "Y": {
+            "Const": 213.969
+          }
+        }
+      ],
+      "IsClosed": true,
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 700
+          },
+          "CenterY": {
+            "Const": 200
+          },
+          "Value": {
+            "Bind": "FanAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "fan_blade_3",
+      "Name": "Fan blade 3",
+      "IsVisible": true,
+      "ZIndex": 22,
+      "Fill": {
+        "Const": "#38BDF8"
+      },
+      "Stroke": {
+        "Const": "#0EA5E9"
+      },
+      "StrokeThickness": {
+        "Const": 1
+      },
+      "Opacity": {
+        "Const": 0.85
+      },
+      "Type": "Polygon",
+      "Points": [
+        {
+          "X": {
+            "Const": 646.252
+          },
+          "Y": {
+            "Const": 205.214
+          }
+        },
+        {
+          "X": {
+            "Const": 646.014
+          },
+          "Y": {
+            "Const": 201.216
+          }
+        },
+        {
+          "X": {
+            "Const": 646.072
+          },
+          "Y": {
+            "Const": 197.212
+          }
+        },
+        {
+          "X": {
+            "Const": 646.427
+          },
+          "Y": {
+            "Const": 193.223
+          }
+        },
+        {
+          "X": {
+            "Const": 647.076
+          },
+          "Y": {
+            "Const": 189.272
+          }
+        },
+        {
+          "X": {
+            "Const": 648.017
+          },
+          "Y": {
+            "Const": 185.379
+          }
+        },
+        {
+          "X": {
+            "Const": 649.243
+          },
+          "Y": {
+            "Const": 181.567
+          }
+        },
+        {
+          "X": {
+            "Const": 650.749
+          },
+          "Y": {
+            "Const": 177.856
+          }
+        },
+        {
+          "X": {
+            "Const": 652.526
+          },
+          "Y": {
+            "Const": 174.267
+          }
+        },
+        {
+          "X": {
+            "Const": 686.771
+          },
+          "Y": {
+            "Const": 195.417
+          }
+        },
+        {
+          "X": {
+            "Const": 686.626
+          },
+          "Y": {
+            "Const": 195.861
+          }
+        },
+        {
+          "X": {
+            "Const": 686.495
+          },
+          "Y": {
+            "Const": 196.31
+          }
+        },
+        {
+          "X": {
+            "Const": 686.38
+          },
+          "Y": {
+            "Const": 196.762
+          }
+        },
+        {
+          "X": {
+            "Const": 686.279
+          },
+          "Y": {
+            "Const": 197.219
+          }
+        },
+        {
+          "X": {
+            "Const": 686.194
+          },
+          "Y": {
+            "Const": 197.678
+          }
+        },
+        {
+          "X": {
+            "Const": 686.124
+          },
+          "Y": {
+            "Const": 198.14
+          }
+        },
+        {
+          "X": {
+            "Const": 686.07
+          },
+          "Y": {
+            "Const": 198.604
+          }
+        },
+        {
+          "X": {
+            "Const": 686.031
+          },
+          "Y": {
+            "Const": 199.07
+          }
+        }
+      ],
+      "IsClosed": true,
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 700
+          },
+          "CenterY": {
+            "Const": 200
+          },
+          "Value": {
+            "Bind": "FanAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "fan_blade_4",
+      "Name": "Fan blade 4",
+      "IsVisible": true,
+      "ZIndex": 23,
+      "Fill": {
+        "Const": "#38BDF8"
+      },
+      "Stroke": {
+        "Const": "#0EA5E9"
+      },
+      "StrokeThickness": {
+        "Const": 1
+      },
+      "Opacity": {
+        "Const": 0.85
+      },
+      "Type": "Polygon",
+      "Points": [
+        {
+          "X": {
+            "Const": 694.786
+          },
+          "Y": {
+            "Const": 146.252
+          }
+        },
+        {
+          "X": {
+            "Const": 698.784
+          },
+          "Y": {
+            "Const": 146.014
+          }
+        },
+        {
+          "X": {
+            "Const": 702.788
+          },
+          "Y": {
+            "Const": 146.072
+          }
+        },
+        {
+          "X": {
+            "Const": 706.777
+          },
+          "Y": {
+            "Const": 146.427
+          }
+        },
+        {
+          "X": {
+            "Const": 710.728
+          },
+          "Y": {
+            "Const": 147.076
+          }
+        },
+        {
+          "X": {
+            "Const": 714.621
+          },
+          "Y": {
+            "Const": 148.017
+          }
+        },
+        {
+          "X": {
+            "Const": 718.433
+          },
+          "Y": {
+            "Const": 149.243
+          }
+        },
+        {
+          "X": {
+            "Const": 722.144
+          },
+          "Y": {
+            "Const": 150.749
+          }
+        },
+        {
+          "X": {
+            "Const": 725.733
+          },
+          "Y": {
+            "Const": 152.526
+          }
+        },
+        {
+          "X": {
+            "Const": 704.583
+          },
+          "Y": {
+            "Const": 186.771
+          }
+        },
+        {
+          "X": {
+            "Const": 704.139
+          },
+          "Y": {
+            "Const": 186.626
+          }
+        },
+        {
+          "X": {
+            "Const": 703.69
+          },
+          "Y": {
+            "Const": 186.495
+          }
+        },
+        {
+          "X": {
+            "Const": 703.238
+          },
+          "Y": {
+            "Const": 186.38
+          }
+        },
+        {
+          "X": {
+            "Const": 702.781
+          },
+          "Y": {
+            "Const": 186.279
+          }
+        },
+        {
+          "X": {
+            "Const": 702.322
+          },
+          "Y": {
+            "Const": 186.194
+          }
+        },
+        {
+          "X": {
+            "Const": 701.86
+          },
+          "Y": {
+            "Const": 186.124
+          }
+        },
+        {
+          "X": {
+            "Const": 701.396
+          },
+          "Y": {
+            "Const": 186.07
+          }
+        },
+        {
+          "X": {
+            "Const": 700.93
+          },
+          "Y": {
+            "Const": 186.031
+          }
+        }
+      ],
+      "IsClosed": true,
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 700
+          },
+          "CenterY": {
+            "Const": 200
+          },
+          "Value": {
+            "Bind": "FanAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "fan_hub",
+      "Name": "Fan hub",
+      "IsVisible": true,
+      "ZIndex": 26,
+      "Fill": {
+        "Const": "#1E3A5F"
+      },
+      "Stroke": {
+        "Const": "#38BDF8"
+      },
+      "StrokeThickness": {
+        "Const": 1.5
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 700
+      },
+      "CenterY": {
+        "Const": 200
+      },
+      "RadiusX": {
+        "Const": 12
+      },
+      "RadiusY": {
+        "Const": 12
+      }
+    },
+    {
+      "Id": "alarm_ring",
+      "Name": "Alarm lamp base",
+      "IsVisible": true,
+      "ZIndex": 28,
+      "Fill": null,
+      "Stroke": {
+        "Const": "#33517A"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 860
+      },
+      "CenterY": {
+        "Const": 70
+      },
+      "RadiusX": {
+        "Const": 26
+      },
+      "RadiusY": {
+        "Const": 26
+      }
+    },
+    {
+      "Id": "alarm_lamp",
+      "Name": "Alarm lamp",
+      "IsVisible": true,
+      "ZIndex": 30,
+      "Fill": {
+        "Bind": "LampColor"
+      },
+      "Stroke": {
+        "Const": "#1E3A5F"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Opacity": {
+        "Const": 0.95
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 860
+      },
+      "CenterY": {
+        "Const": 70
+      },
+      "RadiusX": {
+        "Const": 18
+      },
+      "RadiusY": {
+        "Const": 18
+      }
+    },
+    {
+      "Id": "gauge_dial",
+      "Name": "Gauge dial",
+      "IsVisible": true,
+      "ZIndex": 40,
+      "Fill": {
+        "Const": "#0F1A2C"
+      },
+      "Stroke": {
+        "Const": "#2D4B73"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 620
+      },
+      "CenterY": {
+        "Const": 430
+      },
+      "RadiusX": {
+        "Const": 80
+      },
+      "RadiusY": {
+        "Const": 80
+      }
+    },
+    {
+      "Id": "gauge_arc",
+      "Name": "Gauge scale arc",
+      "IsVisible": true,
+      "ZIndex": 41,
+      "Fill": null,
+      "Stroke": {
+        "Const": "#38BDF8"
+      },
+      "StrokeThickness": {
+        "Const": 3
+      },
+      "LineCap": "Round",
+      "Type": "Path",
+      "Data": "M 556,478 A 80,80 0 0 1 684,478",
+      "OffsetX": 0,
+      "OffsetY": 0
+    },
+    {
+      "Id": "gauge_needle",
+      "Name": "Pressure needle",
+      "IsVisible": true,
+      "ZIndex": 44,
+      "Fill": null,
+      "Stroke": {
+        "Const": "#F97316"
+      },
+      "StrokeThickness": {
+        "Const": 3
+      },
+      "LineCap": "Round",
+      "Type": "Line",
+      "X1": {
+        "Const": 620
+      },
+      "Y1": {
+        "Const": 430
+      },
+      "X2": {
+        "Const": 620
+      },
+      "Y2": {
+        "Const": 360
+      },
+      "RenderTransform": {
+        "Rotate": {
+          "CenterX": {
+            "Const": 620
+          },
+          "CenterY": {
+            "Const": 430
+          },
+          "Value": {
+            "Bind": "NeedleAngle"
+          }
+        }
+      }
+    },
+    {
+      "Id": "gauge_hub",
+      "Name": "Gauge hub",
+      "IsVisible": true,
+      "ZIndex": 46,
+      "Fill": {
+        "Const": "#F97316"
+      },
+      "Stroke": null,
+      "StrokeThickness": {
+        "Const": 0
+      },
+      "Type": "Ellipse",
+      "CenterX": {
+        "Const": 620
+      },
+      "CenterY": {
+        "Const": 430
+      },
+      "RadiusX": {
+        "Const": 6
+      },
+      "RadiusY": {
+        "Const": 6
+      }
+    },
+    {
+      "Id": "conveyor",
+      "Name": "Conveyor belt",
+      "IsVisible": true,
+      "ZIndex": 50,
+      "Fill": {
+        "Const": "#16233A"
+      },
+      "Stroke": {
+        "Const": "#2D4B73"
+      },
+      "StrokeThickness": {
+        "Const": 2
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Const": 420
+      },
+      "Y": {
+        "Const": 150
+      },
+      "Width": {
+        "Const": 320
+      },
+      "Height": {
+        "Const": 36
+      },
+      "RadiusX": {
+        "Const": 18
+      },
+      "RadiusY": {
+        "Const": 18
+      }
+    },
+    {
+      "Id": "conveyor_marker",
+      "Name": "Material",
+      "IsVisible": true,
+      "ZIndex": 52,
+      "Fill": {
+        "Const": "#FBBF24"
+      },
+      "Stroke": {
+        "Const": "#B45309"
+      },
+      "StrokeThickness": {
+        "Const": 1
+      },
+      "Type": "Rectangle",
+      "X": {
+        "Bind": "ConveyorPos"
+      },
+      "Y": {
+        "Const": 158
+      },
+      "Width": {
+        "Const": 28
+      },
+      "Height": {
+        "Const": 20
+      },
+      "RadiusX": {
+        "Const": 4
+      },
+      "RadiusY": {
+        "Const": 4
+      }
+    }
+  ],
+  "ExpressionAnimations": [
+    {
+      "Id": "expr_fan",
+      "TargetVariable": "FanAngle",
+      "Expression": "MotorRPM * 6 * t",
+      "Enabled": true,
+      "Wrap": 360
+    },
+    {
+      "Id": "expr_level_h",
+      "TargetVariable": "LevelHeight",
+      "Expression": "clamp(TankLevel, 0, 100) / 100 * 236",
+      "Enabled": true
+    },
+    {
+      "Id": "expr_level_y",
+      "TargetVariable": "LevelY",
+      "Expression": "516 - clamp(TankLevel, 0, 100) / 100 * 236",
+      "Enabled": true
+    },
+    {
+      "Id": "expr_needle",
+      "TargetVariable": "NeedleAngle",
+      "Expression": "clamp(Pressure / 1.6, 0, 1) * 240 - 120",
+      "Enabled": true
+    },
+    {
+      "Id": "expr_lamp",
+      "TargetVariable": "LampColor",
+      "Expression": "if(Alarm > 0.5, 16711680, 65280)",
+      "Enabled": true
+    }
+  ],
+  "KeyframeAnimations": [
+    {
+      "Id": "kf_conveyor",
+      "Name": "Material transport",
+      "TargetVariable": "ConveyorPos",
+      "Loop": true,
+      "Keyframes": [
+        {
+          "Time": 0,
+          "Value": 428
+        },
+        {
+          "Time": 3,
+          "Value": 704
+        }
+      ]
+    }
+  ],
+  "Groups": [
+    {
+      "GroupId": "group_tank",
+      "Name": "Tank",
+      "ShapeIds": [
+        "tank_body",
+        "tank_liquid",
+        "tank_cap"
+      ],
+      "Visible": true
+    },
+    {
+      "GroupId": "group_fan",
+      "Name": "Fan",
+      "ShapeIds": [
+        "fan_blade_1",
+        "fan_blade_2",
+        "fan_blade_3",
+        "fan_blade_4",
+        "fan_hub"
+      ],
+      "Visible": true
+    },
+    {
+      "GroupId": "group_gauge",
+      "Name": "Pressure gauge",
+      "ShapeIds": [
+        "gauge_dial",
+        "gauge_arc",
+        "gauge_needle",
+        "gauge_hub"
+      ],
+      "Visible": true
+    },
+    {
+      "GroupId": "group_alarm",
+      "Name": "Alarm",
+      "ShapeIds": [
+        "alarm_lamp",
+        "alarm_ring"
+      ],
+      "Visible": true
+    }
+  ],
+  "Meta": {
+    "Title": "Industrial HMI panel sample",
+    "Description": "Level, fan, pressure gauge and alarm lamp are all variable-driven; demonstrates chained expression dependencies and numeric color bindings",
+    "Author": "VectAnim",
+    "CreatedAt": "2026-10-26T08:06:10.623Z",
+    "UpdatedAt": "2026-10-26T08:06:10.623Z"
+  }
+}

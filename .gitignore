@@ -1,0 +1,21 @@
+# Dependencies and caches (all kept inside the repository for easy cleanup)
+node_modules/
+.cache/
+dist/
+artifacts/
+*.log
+
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Editor local autosave / export
+*.vectanim.json.bak
+
+# OS
+Thumbs.db
+.DS_Store
